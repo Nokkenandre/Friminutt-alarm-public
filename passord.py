@@ -1,0 +1,2 @@
+password = "Passord"
+username = "Brukernavn"
