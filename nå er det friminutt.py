@@ -1,3 +1,5 @@
+# Denne filen sjekker klokkeslettet og spiller lyden
+
 import random
 import vismaloggin
 from datetime import datetime
@@ -45,4 +47,5 @@ while True:
             print("Webscraping failed")
             print(tid)
         sleep(60)
+        # venter et minutt for å ungå å spille en lydfil hvert sekund ettersom programmet ikke bryr seg om sekunder.  
     sleep(1)
