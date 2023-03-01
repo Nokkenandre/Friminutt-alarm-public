@@ -1,3 +1,4 @@
+# Denne filen logger inn og finner klokkeslett fra visma in school
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -24,10 +25,15 @@ def loggin():
     days = [man, tir, ons, tor, fre]
     if start == 0:
         username, password, url = passord.username, passord.password, "Visma url"
+        # "visma url" byttes ut med den faktiske urlen til dashboardet på visma
         driverpath = Service(r'C:\Users\User\Downloads\chromedriver_win32\chromedriver.exe')
+        # Programmet er avhenging av å ha den nyeste vertionen av chromedriver instalert
+        
+        # Denne delen gjør at vinduet den bruker for å logge inn er usynelig
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(service=driverpath, options=options)
+        
 
     driver.get(url)
 
@@ -35,7 +41,7 @@ def loggin():
     print("Initialising.")
     button = driver.find_element(By.ID, "onetrust-accept-btn-handler")
     button.click()
-    print("Cookies have been eaten")
+    print("Accepted cookies")
     button = driver.find_element(By.ID, "login-with-feide-button")
     button.click()
     countdown(5)
@@ -46,7 +52,7 @@ def loggin():
 
     button = driver.find_element(By.XPATH, "/html/body/div/article/section[2]/div[1]/form/button")
     button.click()
-    print("loggin complete")
+    print("Loggin complete")
     countdown(5)
     src = driver.page_source
     split = src.split("<")
